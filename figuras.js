@@ -29,6 +29,15 @@ function areaTriangulo(base, lado2){
     return (base * altura(base, lado2))/2;
 }
 
+function alturaIsosceles(lado1, lado2, base){
+    if(lado1 == lado2){
+        altura = Math.sqrt(Math.pow(lado1, 2)-(Math.pow(base,2)/4));
+        return alert("la altura del triángulo isósceles es: " + altura);
+    }else
+    return alert("No es un triángulo isósceles");
+}
+
+
 console.groupEnd();
 
 console.group("Círculos")
@@ -63,3 +72,4 @@ function calcularAreaCuadrado(){
     const area = areaCuadrado(value);
     alert(area);
 }
+
