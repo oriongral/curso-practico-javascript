@@ -5,12 +5,46 @@ function calcularPrecioConDescuento(precio, descuento){
 }
 
 function onclickButtonPriceDiscount(){
-    const inputPrice = document.getElementById("InputPrice");
+    const inputPrice = document.getElementById("inputPrice");
     const priceValue = inputPrice.value; 
-    const InputDiscount = document.getElementById("InputDiscount");
-    const discountValue = InputDiscount.value;
-    const precioConDescuento = calcularPrecioConDescuento(priceValue,discountValue);
 
-    const resultPrice = document.getElementById("ResultPrice");
-    resultPrice.innerText="El precio con descuento son: $" + precioConDescuento;
+    const resultPrice = document.getElementById("resultPrice");
+
+    const inputCoupon = document.getElementById("inputCoupon");
+    const couponValue = inputCoupon.value; 
+
+    let couponDiscount;
+    let precioConDescuento;
+
+    switch (couponValue){
+        case "10%":
+            couponDiscount = 10;
+            precioConDescuento = calcularPrecioConDescuento(priceValue,couponDiscount);
+            resultPrice.innerText = "El precio con descuento son: $" + precioConDescuento;
+            break;
+        case "15%":
+            couponDiscount = 15;
+            precioConDescuento = calcularPrecioConDescuento(priceValue,couponDiscount);
+            resultPrice.innerText = "El precio con descuento son: $" + precioConDescuento;
+            break;
+         case "20%":
+            couponDiscount = 20;
+            precioConDescuento = calcularPrecioConDescuento(priceValue,couponDiscount);
+            resultPrice.innerText = "El precio con descuento son: $" + precioConDescuento;
+            break;
+        case "25%":
+            couponDiscount = 25;
+            precioConDescuento = calcularPrecioConDescuento(priceValue,couponDiscount);
+            resultPrice.innerText = "El precio con descuento son: $" + precioConDescuento;
+            break;
+        case "40%":
+            couponDiscount = 40;
+            precioConDescuento = calcularPrecioConDescuento(priceValue,couponDiscount);
+            resultPrice.innerText = "El precio con descuento son: $" + precioConDescuento;
+            break;
+        default:
+            alert("El cupón ingresado no es valido");
+    }
+
+ 
 }
