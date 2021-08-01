@@ -1,7 +1,11 @@
-const coupons = ["10%","15%","20%","25%","40%"];
+const coupons = [{promotion: "10%", discount: 10,},
+                 {promotion: "15%", discount: 15,},
+                 {promotion: "20%", discount: 20,},
+                 {promotion: "25%", discount: 25,},
+                 {promotion: "40%", discount: 40,}];
 
 function calcularPrecioConDescuento(precio, descuento){
-    const porcentajePrecioConDescuento = 100 - descuento;
+    const porcentajePrecioConDescuento = 100 - descuento;    
     const precioConDescuento = (precio * porcentajePrecioConDescuento)/100;
     return precioConDescuento;
 }
@@ -9,34 +13,23 @@ function calcularPrecioConDescuento(precio, descuento){
 function onclickButtonPriceDiscount(){
     const inputPrice = document.getElementById("inputPrice");
     const priceValue = inputPrice.value; 
-
-    const resultPrice = document.getElementById("resultPrice");
-
+    
     const inputCoupon = document.getElementById("inputCoupon");
     const couponValue = inputCoupon.value; 
 
-if(!coupons.includes(couponValue)){
-    alert("El cupón " + couponValue + " no es válido");
-}else if (couponValue === "10%"){
-    couponDiscount = 10;
-    precioConDescuento = calcularPrecioConDescuento(priceValue,couponDiscount);
-    resultPrice.innerText = "El precio con descuento son: $" + precioConDescuento;
-}else if(couponValue === "15%"){
-    couponDiscount = 15;
-    precioConDescuento = calcularPrecioConDescuento(priceValue,couponDiscount);
-    resultPrice.innerText = "El precio con descuento son: $" + precioConDescuento;
-}else if(couponValue === "20%"){
-    couponDiscount = 20;
-    precioConDescuento = calcularPrecioConDescuento(priceValue,couponDiscount);
-    resultPrice.innerText = "El precio con descuento son: $" + precioConDescuento;
-}else if(couponValue === "25%"){
-    couponDiscount = 25;
-    precioConDescuento = calcularPrecioConDescuento(priceValue,couponDiscount);
-    resultPrice.innerText = "El precio con descuento son: $" + precioConDescuento;
-}else if(couponValue === "40%"){
-    couponDiscount = 40;
-    precioConDescuento = calcularPrecioConDescuento(priceValue,couponDiscount);
-    resultPrice.innerText = "El precio con descuento son: $" + precioConDescuento;
-}
+    const isCouponValid = function(coupon){
+        return coupon.promotion === couponValue;
+    };
+
+    const userCoupon = coupons.find(isCouponValid);
+
+    if(!userCoupon){
+        alert("El cupón " + couponValue + "no es válido");
+    }else{
+        const discount = userCoupon.discount;
+        const precioConDescuento = calcularPrecioConDescuento(priceValue, discount);
+        const resultPrice = document.getElementById("resultPrice");
+        resultPrice.innerText = "El precio con descuento son: $" + precioConDescuento;    
+    }
 
 }
